@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="ตั้งแจ้งเตือนให้อาหารแมว"
+            android:textSize="20sp" android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:paddingTop="8dp" android:text="ยังไม่ได้ตั้งแจ้งเตือน"/>
+
+        <LinearLayout
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center"
+            android:paddingTop="16dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:orientation="vertical" android:paddingRight="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="ชั่วโมง"/>
+                <NumberPicker
+                    android:id="@+id/hoursPicker"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="นาที"/>
+                <NumberPicker
+                    android:id="@+id/minutesPicker"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center"
+            android:paddingTop="16dp">
+
+            <Button
+                android:id="@+id/btnStart"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="เริ่มแจ้งเตือน"/>
+
+            <Button
+                android:id="@+id/btnStop"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="หยุด" android:layout_marginStart="12dp"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent" android:layout_height="1dp"
+            android:background="#DDDDDD" android:layout_marginTop="24dp"/>
+
+        <Button
+            android:id="@+id/btnOpenVaccine"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="ไปหน้าสมุดบันทึกวัคซีน"/>
+
+        <Button
+            android:id="@+id/btnOpenCatInfo"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="(ไม่บังคับ) ข้อมูลแมว"/>
+    </LinearLayout>
+</ScrollView>

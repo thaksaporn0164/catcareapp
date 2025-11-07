@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CatCare</string>
+    <string name="vaccine_title">สมุดบันทึกวัคซีน</string>
+    <string name="cat_info_title">ข้อมูลแมว</string>
+</resources>
