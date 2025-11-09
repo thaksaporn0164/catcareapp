@@ -3,6 +3,7 @@ package com.example.catcare
 import android.app.DatePickerDialog
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.activity.ComponentActivity
 import com.example.catcare.alarm.AlarmHelper
@@ -18,6 +19,7 @@ class VaccineActivity : ComponentActivity() {
     private lateinit var btnSave: Button
     private lateinit var tvChosen: TextView
     private lateinit var tvCountdown: TextView
+    private lateinit var btnBack: ImageButton
 
     private var chosenTimeMillis: Long = 0L
     private val fmt = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
@@ -30,6 +32,8 @@ class VaccineActivity : ComponentActivity() {
         btnSave = findViewById(R.id.btnSaveDate)
         tvChosen = findViewById(R.id.tvChosenDate)
         tvCountdown = findViewById(R.id.tvCountdown)
+        btnBack = findViewById(R.id.btnBack)
+
 
         // โหลดวันเก่า (ถ้ามี)
         val saved = Prefs.getNextVaccineTime(this)
@@ -62,6 +66,10 @@ class VaccineActivity : ComponentActivity() {
             AlarmHelper.scheduleVaccine(this, chosenTimeMillis)
             showDateAndCountdown(chosenTimeMillis)
         }
+
+        btnBack.setOnClickListener {
+            finish()
+        }
     }
 
     private fun showDateAndCountdown(time: Long) {
@@ -75,4 +83,5 @@ class VaccineActivity : ComponentActivity() {
             tvCountdown.text = "เหลืออีก $days วัน"
         }
     }
+
 }
