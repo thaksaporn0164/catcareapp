@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_bg_note"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:padding="41dp"
+            android:text="@string/Addnote_title"
+            android:textColor="#364153"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="18dp">
+
+        <Spinner
+            android:id="@+id/noteType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:hint="ค่าที่ต้องการบันทึก"
+            android:paddingTop="30dp"
+            android:paddingBottom="10dp"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_margin="16dp"
+            >
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:text="ยกเลิก"
+                android:layout_margin="20dp"
+                android:textSize="18dp"
+                android:background="@drawable/selector_btn_bg_vac"
+                />
+            <Button
+                android:id="@+id/btnSaveNote"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:text="บันทึก"
+                android:layout_margin="20dp"
+                android:textSize="18dp"
+                android:background="@drawable/selector_btn_bg_note"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

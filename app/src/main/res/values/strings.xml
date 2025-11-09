@@ -5,4 +5,13 @@
     <string name="catName">Milky❤️</string>
     <string name="Timer_Title">ตั้งแจ้งเตือน</string>
     <string name="Note_title">บันทึกสุขภาพ</string>
+    <string name="Addnote_title">เพิ่มบันทึกสุขภาพ</string>
+    <string-array name="note_type">
+        <item>เลือกประเภท</item>
+        <item>อุณหภูมิ (°C)</item>
+        <item>น้ำหนัก (กิโลกรัม)</item>
+        <item>ปริมาณน้ที่ดื่มำ (ลิตร)</item>
+        <item>ปริมาณอาหารที่กิน (กรัม)</item>
+        <item>พฤติกรรมและอาการ</item>
+    </string-array>
 </resources>

@@ -16,7 +16,6 @@ import org.threeten.bp.ZoneId
 import org.threeten.bp.temporal.ChronoUnit
 import java.util.Calendar
 import java.util.Locale
-import java.util.concurrent.TimeUnit
 
 class VaccineActivity : ComponentActivity() {
 

@@ -34,9 +34,9 @@
 
         <!-- (ไม่บังคับ) หน้า 3 -->
         <activity
-            android:name=".CatInfoActivity"
+            android:name=".AddNoteActivity"
             android:exported="false"
-            android:label="@string/cat_info_title"/>
+            android:label="@string/Addnote_title"/>
 
         <activity
             android:name=".MainActivity"
