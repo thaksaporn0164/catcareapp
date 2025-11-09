@@ -11,15 +11,12 @@
         android:background="@drawable/shape_bg_app"
         android:gravity="center_vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:layout_width="322dp"
+            android:layout_height="127dp"
             android:layout_marginTop="18dp"
             android:padding="38dp"
-            android:text="@string/app_name"
-            android:textColor="@color/white"
-            android:textSize="38sp"
-            android:textStyle="bold" />
+            android:src="@drawable/logo_catcare" />
     </LinearLayout>
 
     <ScrollView
