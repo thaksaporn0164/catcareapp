@@ -34,7 +34,6 @@ object AlarmHelper {
         // ยิง exact หลังจาก "ตอนนี้ + interval"
         val triggerAt = SystemClock.elapsedRealtime() + interval
         am.setExactAndAllowWhileIdle(AlarmManager.ELAPSED_REALTIME_WAKEUP, triggerAt, pi)
-        Log.d("AlarmHelper", "Next feed scheduled in ${interval / 1000}s")
     }
 
     fun cancelFeeding(context: Context) {

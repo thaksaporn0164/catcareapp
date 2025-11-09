@@ -13,28 +13,34 @@ import com.example.catcare.util.Prefs
 
 class VaccineReminderReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent?) {
-        NotificationUtils.ensureChannels(context)
+        VaccineReminderReceiver.showNotification(context)
+    }
+    object VaccineReminderReceiver {
+        fun showNotification(context: Context) {
+            NotificationUtils.ensureChannels(context)
 
-        val pi = PendingIntent.getActivity(
-            context, 2001, Intent(context, VaccineActivity::class.java),
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
-        )
+            val pi = PendingIntent.getActivity(
+                context, 2001, Intent(context, VaccineActivity::class.java)
+                    .apply { flags = Intent.FLAG_ACTIVITY_NEW_TASK },
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            )
 
-        val title = "ถึงกำหนดวัคซีนแมวแล้ว"
-        val content = "เปิดดูรายละเอียดและบันทึกวันถัดไป"
+            val title = "ถึงกำหนดวัคซีนแมวแล้ว"
+            val content = "เปิดดูรายละเอียดและบันทึกวันถัดไป"
 
-        val notif = NotificationCompat.Builder(context, NotificationUtils.CHANNEL_VACCINE)
-            .setSmallIcon(R.drawable.ic_launcher_foreground)
-            .setContentTitle(title)
-            .setContentText(content)
-            .setContentIntent(pi)
-            .setAutoCancel(true)
-            .build()
+            val notif = NotificationCompat.Builder(context, NotificationUtils.CHANNEL_VACCINE)
+                .setSmallIcon(R.drawable.ic_launcher_foreground)
+                .setContentTitle(title)
+                .setContentText(content)
+                .setContentIntent(pi)
+                .setAutoCancel(true)
+                .build()
 
-        val nm = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        nm.notify(2001, notif)
+            val nm = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            nm.notify(2001, notif)
 
-        // ไม่ตั้งซ้ำอัตโนมัติ ให้ผู้ใช้บันทึกวันใหม่ใน VaccineActivity
-        Prefs.setNextVaccineTime(context, 0L)
+            // ล้างค่า prefs เหมือนเดิม
+            Prefs.setNextVaccineTime(context, 0L)
+        }
     }
 }

@@ -8,7 +8,12 @@ import android.widget.TextView
 import androidx.activity.ComponentActivity
 import com.example.catcare.alarm.AlarmHelper
 import com.example.catcare.util.Prefs
+import com.jakewharton.threetenabp.AndroidThreeTen
 import java.text.SimpleDateFormat
+import org.threeten.bp.Instant
+import org.threeten.bp.LocalDate
+import org.threeten.bp.ZoneId
+import org.threeten.bp.temporal.ChronoUnit
 import java.util.Calendar
 import java.util.Locale
 import java.util.concurrent.TimeUnit
@@ -27,6 +32,7 @@ class VaccineActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_vaccine)
+        AndroidThreeTen.init(this)
 
         btnPickDate = findViewById(R.id.btnPickDate)
         btnSave = findViewById(R.id.btnSaveDate)
@@ -56,6 +62,11 @@ class VaccineActivity : ComponentActivity() {
                 cal.get(Calendar.MONTH),
                 cal.get(Calendar.DAY_OF_MONTH)
             )
+            // จำกัดให้เลือกวันพรุ่งนี้เป็นต้นไป
+            val tomorrow = Calendar.getInstance()
+            tomorrow.add(Calendar.DAY_OF_MONTH, 1)
+            dlg.datePicker.minDate = tomorrow.timeInMillis
+
             dlg.show()
         }
 
@@ -74,14 +85,15 @@ class VaccineActivity : ComponentActivity() {
 
     private fun showDateAndCountdown(time: Long) {
         tvChosen.text = "กำหนดครั้งถัดไป: ${fmt.format(time)}"
-        val now = System.currentTimeMillis()
-        val diff = time - now
-        if (diff <= 0) {
-            tvCountdown.text = "ถึงกำหนดแล้ว"
-        } else {
-            val days = TimeUnit.MILLISECONDS.toDays(diff)
-            tvCountdown.text = "เหลืออีก $days วัน"
-        }
+
+        val nowDate = LocalDate.now()
+        val chosenDate = Instant.ofEpochMilli(time)
+            .atZone(ZoneId.systemDefault())
+            .toLocalDate()
+
+        val days = ChronoUnit.DAYS.between(nowDate, chosenDate)
+
+        tvCountdown.text = if (days <= 0) "ถึงกำหนดแล้ว" else "เหลืออีก $days วัน"
     }
 
 }
