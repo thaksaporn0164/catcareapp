@@ -1,13 +1,12 @@
 package com.example.catcare
 
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.widget.Button
-import android.widget.EditText
-import android.widget.NumberPicker
-import android.widget.TextView
 import androidx.activity.ComponentActivity
-import com.example.catcare.alarm.AlarmHelper
-import com.example.catcare.util.Prefs
+import androidx.core.app.ActivityCompat
+
 
 class MainActivity : ComponentActivity() {
     private lateinit var btnTimer: Button
@@ -18,11 +17,12 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        requestNotificationPermissionIfNeeded()
+
         btnTimer = findViewById(R.id.btnTimer)
         btnVac = findViewById(R.id.btnVac)
         btnNote = findViewById(R.id.btnNote)
-
-
 
         btnTimer.setOnClickListener {
             startActivity(android.content.Intent(this, TimerActivity::class.java))
@@ -34,7 +34,19 @@ class MainActivity : ComponentActivity() {
 
         btnNote.setOnClickListener {
             startActivity(android.content.Intent(this, NoteActivity::class.java))
+        }
+    }
 
+    private fun requestNotificationPermissionIfNeeded() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS)
+                != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(android.Manifest.permission.POST_NOTIFICATIONS),
+                    1
+                )
+            }
         }
     }
 }

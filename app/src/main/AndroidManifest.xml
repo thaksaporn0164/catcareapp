@@ -6,6 +6,8 @@
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
     <!-- รับเหตุการณ์เครื่องบูตเสร็จ เพื่อตั้งแจ้งเตือนใหม่ -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <!-- ขอสิทธิ์แจ้งเตือน (Android 13+) -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:allowBackup="true"
@@ -49,12 +51,12 @@
         <!-- Receiver สำหรับแจ้งเตือนให้อาหาร -->
         <receiver
             android:name=".alarm.FeedingAlarmReceiver"
-            android:exported="false"/>
+            android:exported="true"/>
 
         <!-- Receiver สำหรับเตือนวัคซีน -->
         <receiver
             android:name=".alarm.VaccineReminderReceiver"
-            android:exported="false"/>
+            android:exported="true"/>
 
         <!-- Receiver เมื่อเครื่องบูตเสร็จ เพื่อรีตั้ง alarm -->
         <receiver
