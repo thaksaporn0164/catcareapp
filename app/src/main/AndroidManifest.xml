@@ -21,6 +21,11 @@
             android:label="@string/vaccine_title"/>
 
         <activity
+            android:name=".NoteActivity"
+            android:exported="false"
+            android:label="@string/Note_title"/>
+
+        <activity
             android:name=".TimerActivity"
             android:exported="false"
             android:label="@string/Timer_Title"/>

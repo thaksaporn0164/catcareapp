@@ -10,10 +10,9 @@ import com.example.catcare.alarm.AlarmHelper
 import com.example.catcare.util.Prefs
 
 class MainActivity : ComponentActivity() {
-
-    private lateinit var btnOpenCatInfo: Button
     private lateinit var btnTimer: Button
-    private lateinit var btnVac:Button
+    private lateinit var btnVac: Button
+    private lateinit var btnNote: Button
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,6 +20,9 @@ class MainActivity : ComponentActivity() {
         setContentView(R.layout.activity_main)
         btnTimer = findViewById(R.id.btnTimer)
         btnVac = findViewById(R.id.btnVac)
+        btnNote = findViewById(R.id.btnNote)
+
+
 
         btnTimer.setOnClickListener {
             startActivity(android.content.Intent(this, TimerActivity::class.java))
@@ -30,14 +32,9 @@ class MainActivity : ComponentActivity() {
             startActivity(android.content.Intent(this, VaccineActivity::class.java))
         }
 
+        btnNote.setOnClickListener {
+            startActivity(android.content.Intent(this, NoteActivity::class.java))
 
-
-//        btnOpenVaccine.setOnClickListener {
-//            startActivity(android.content.Intent(this, VaccineActivity::class.java))
-//        }
-//
-//        btnOpenCatInfo.setOnClickListener {
-//            startActivity(android.content.Intent(this, CatInfoActivity::class.java))
-//        }
+        }
     }
 }
